@@ -53,7 +53,6 @@ namespace ASPNET_Core_3.Controllers
         }
 
         [HttpPost]
-        //public async Task<IActionResult> Register(string firstName, string lastName, string username, string password, string email)
         public async Task<IActionResult> Register(RegisterInfo registerInfo)
         {
             IdentityResult result;
