@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ASPNET_Core_3.Models
 {
-    public class AppRole : IdentityRole<int>
+    public class AppRole : IdentityRole<Guid>
     {
     }
 }

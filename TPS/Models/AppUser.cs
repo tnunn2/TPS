@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ASPNET_Core_3.Models
 {
-    public class AppUser : IdentityUser<int>
+    public class AppUser : IdentityUser<Guid>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -34,10 +34,10 @@ namespace ASPNET_Core_3.Controllers
             }
             else
             {
-                ViewBag.Result = "result is " + result;
+                ViewBag.Result = "Invalid User or Password";
             }
 
-            return View();
+            return View("Login1");
         }
 
         public async Task<IActionResult> Logout()
