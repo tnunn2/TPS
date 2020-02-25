@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TPS.Services;
 
 namespace ASPNET_Core_3
 {
@@ -45,6 +46,8 @@ namespace ASPNET_Core_3
             {
                 options.UseNpgsql(Configuration.GetConnectionString("TPS"));
             });
+
+            services.AddTransient<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +59,7 @@ namespace ASPNET_Core_3
             }
             else
             {
-                app.UseExceptionHandler("/Home/Main");
+                app.UseExceptionHandler("/Home/Index");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -72,7 +75,7 @@ namespace ASPNET_Core_3
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Main}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

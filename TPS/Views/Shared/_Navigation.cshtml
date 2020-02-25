@@ -11,8 +11,8 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs" style="position: absolute; top: 91px; left: 0px; will-change: top, left;">
                         @*<li>
-                            <a asp-controller="Account" asp-action="Register">Register</a>
-                        </li>*@
+                        <a asp-controller="Account" asp-action="Register">Register</a>
+                    </li>*@
                         <li>
                             @if (User.Identity.IsAuthenticated)
                             {
@@ -31,11 +31,21 @@
                     TPS
                 </div>
             </li>
-            <li class="@Html.IsSelected(controller: "Home", action: "Main")">
-                <a href="@Url.Action("Main", "Home")"><i class="fa fa-calculator"></i> <span class="nav-label">Accounting</span> </a>
+            <li class="@Html.IsSelected(controller: "Home", action: "Index")">
+                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span class="nav-label">Home</span> </a>
             </li>
-            <li class="@Html.IsSelected(controller: "Home", action: "Minor")">
-                <a href="@Url.Action("Minor", "Home")"><i class="fa fa-line-chart"></i> <span class="nav-label">Business Summary</span></a>
+            <li class="@Html.IsSelected(controller: "Accounting")">
+                <a href="#"><i class="fa fa-calculator"></i> <span class="nav-label" data-i18n="nav.forms">Accounting</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Accounting", cssClass: "in")">
+                    <li class="@Html.IsSelected(action: "CustomerManagement")"><a href="@Url.Action("CustomerManagement", "Accounting")">Customer Management</a></li>
+                    <li class="@Html.IsSelected(action: "AccountManagement")"><a href="@Url.Action("AccountManagement", "Accounting")">Account Management</a></li>
+                    <li class="@Html.IsSelected(action: "ReportingAnalytics")"><a href="@Url.Action("ReportingAnalytics", "Accounting")">Reporting & Analytics</a></li>
+                    <li class="@Html.IsSelected(action: "InstantPay")"><a href="@Url.Action("InstantPay", "Accounting")">Instant Pay</a></li>
+                    <li class="@Html.IsSelected(action: "PortalManagement")"><a href="@Url.Action("PortalManagement", "Accounting")">Portal Management</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(controller: "Business", action: "Index")">
+                <a href="@Url.Action("Index", "Business")"><i class="fa fa-line-chart"></i> <span class="nav-label">Business</span> </a>
             </li>
         </ul>
     </div>

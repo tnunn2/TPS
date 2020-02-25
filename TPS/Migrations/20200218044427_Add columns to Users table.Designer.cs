@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace TPS.Migrations
 {
     [DbContext(typeof(IdentityAppContext))]
-    [Migration("20200129050219_Change date type to Guid for user id.")]
-    partial class ChangedatetypetoGuidforuserid
+    [Migration("20200218044427_Add columns to Users table")]
+    partial class AddcolumnstoUserstable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

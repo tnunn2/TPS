@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace TPS.Migrations
 {
-    public partial class ChangedatetypetoGuidforuserid : Migration
+    public partial class AddcolumnstoUserstable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

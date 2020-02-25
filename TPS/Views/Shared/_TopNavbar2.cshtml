@@ -1,0 +1,80 @@
+﻿<div class="row border-bottom gray-bg">
+    <nav class="navbar navbar-expand-lg navbar-static-top" role="navigation">
+        <a href="#" class="navbar-brand">Trusted Partner System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-reorder"></i>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav mr-auto">
+                <li id="home" class="dropdown">
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Home</a>
+                    @*<ul role="menu" class="dropdown-menu">
+                            <li><a href="">Menu item</a></li>
+                            <li><a href="">Menu item</a></li>
+                            <li><a href="">Menu item</a></li>
+                            <li><a href="">Menu item</a></li>
+                        </ul>*@
+                </li>
+                <li id="accounting" class="dropdown active">
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Accounting</a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="">Customer Management</a></li>
+                        <li><a href="">Accounting Management</a></li>
+                        <li><a href="">Reporting & Analytics</a></li>
+                        <li><a href="">Instant Pay</a></li>
+                        <li><a href="">Portal Management</a></li>
+                    </ul>
+                </li>
+                <li id="business" class="dropdown">
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Business</a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                    </ul>
+                </li>
+
+                <li id="about" class="dropdown">
+                    <a aria-expanded="false" role="button" href="#"> About</a>
+                    @*<ul role="menu" class="dropdown-menu">
+                            <li><a href="">Menu item</a></li>
+                            <li><a href="">Menu item</a></li>
+                            <li><a href="">Menu item</a></li>
+                            <li><a href="">Menu item</a></li>
+                        </ul>*@
+                </li>
+                <li id="contact" class="dropdown">
+                    <a aria-expanded="false" role="button" href="#"> Contact</a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="/Account/Logout">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+@*@section Scripts{ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#home').on("click",
+                function (e) {
+                    $('li').removeClass("active");
+                });
+        });
+    </script>
+}*@
+
+
