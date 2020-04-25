@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using ASPNET_Core_3.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -133,34 +131,60 @@ namespace ASPNET_Core_3.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterInfo registerInfo)
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             IdentityResult result;
 
             try
             {
-                AppUser user = await UserMgr.FindByNameAsync(registerInfo.UserName);
+                AppUser user = await UserMgr.FindByNameAsync(registerViewModel.UserName);
 
                 if (user == null)
                 {
-                    user = new AppUser
-                    {
-                        UserName = registerInfo.UserName,
-                        Email = registerInfo.Email,
-                        FirstName = registerInfo.FirstName,
-                        LastName = registerInfo.LastName
-                    };
+                    user = await UserMgr.FindByEmailAsync(registerViewModel.Email);
 
-                    result = await UserMgr.CreateAsync(user, registerInfo.Password);
+                    if (user == null)
+                    {
+                        user = new AppUser
+                        {
+                            UserName = registerViewModel.UserName,
+                            Email = registerViewModel.Email,
+                            FirstName = registerViewModel.FirstName,
+                            LastName = registerViewModel.LastName
+                        };
+
+                        result = await UserMgr.CreateAsync(user, registerViewModel.Password);
+
+                        if (result.Succeeded) return RedirectToAction("Login", "Account");
+
+                        AddErrors(result);
+                    }
+                    else
+                    {
+                        registerViewModel.Email = "TEst";
+                        ModelState.AddModelError("", "An account exists with the same email address.");
+                    }
                 }
-            
+                else
+                {
+                    registerViewModel.UserName = string.Empty;
+                    ModelState.AddModelError("", "User name already exists.");
+                }
             }
             catch(Exception ex)
             {
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Login", "Account");
+            return View("Register1", registerViewModel);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ASPNET_Core_3.Models
+﻿namespace TPS.Models
 {
-    public class RegisterInfo
+    public class RegisterViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,16 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ASPNET_Core_3.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TPS.Data;
 using TPS.Services;
 
 namespace ASPNET_Core_3
@@ -47,6 +50,16 @@ namespace ASPNET_Core_3
                 options.UseNpgsql(Configuration.GetConnectionString("TPS"));
             });
 
+            services.AddDbContext<TpsDbContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("TPS"));
+            });
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("99.99.9.195"));
+            });
+
             services.AddTransient<IEmailService, EmailService>();
         }
 
@@ -63,6 +76,12 @@ namespace ASPNET_Core_3
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

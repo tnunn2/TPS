@@ -17,7 +17,7 @@ namespace TPS.Services
         {
             var sendGridUserName = "apikey";
             var sentFrom = "helpdesk@tps.com";
-            var sendGridPassword = "";
+            var sendGridPassword = "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";
 
             // Configure the client:
             var client = new SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
