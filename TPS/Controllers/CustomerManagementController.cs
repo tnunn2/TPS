@@ -43,7 +43,7 @@ namespace TPS.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetData(int id)
+        public IActionResult GetData()
         {
             var customers = _context.Customers.Select(s => new CustomerListViewModel
             {
