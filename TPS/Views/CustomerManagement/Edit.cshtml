@@ -1,0 +1,186 @@
+﻿@model TPS.Models.Customer
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Customer Management</h2>
+        <ol class="breadcrumb">
+            <li class="active breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <a href="@Url.Action("Index", "CustomerManagement")">Customer Management</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Add</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#" class="dropdown-item">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-item">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form action="/CustomerManagement/Edit" method="post">
+                        <div class="row">
+                            @Html.HiddenFor(model => model.CustomerId)
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Name, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control " } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.User, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Address, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control " } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.AttentionOrCareOf, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.AttentionOrCareOf, new { htmlAttributes = new { @class = "form-control " } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Suite, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Suite, new { htmlAttributes = new { @class = "form-control " } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.City, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control " } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.State, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.ZipCode, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.BillingContact, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.BillingContact, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.SalesPerson, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.SalesPerson, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.BalanceMethod, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.BalanceMethod, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.TermsCode, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.TermsCode, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.CreditLimit, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.CreditLimit, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.AverageDaysToPay, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.AverageDaysToPay, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.CurrentBalance, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.CurrentBalance, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.PastDueAmount, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.PastDueAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.HighBalance, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.HighBalance, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Pricing, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Pricing, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Discount, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.RequiredPoNumber, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.RequiredPoNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.ShipVia, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.ShipVia, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.TaxCode, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.TaxCode, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.ShipTo, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.ShipTo, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.BillTo, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.BillTo, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Type, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.Group, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.Group, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.TaxNumber, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.TaxNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.AccountReceivable, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.AccountReceivable, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.SalesPerson, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.SalesPerson, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.SalesPtdHistory, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.SalesPtdHistory, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3 form-group">
+                                @Html.LabelFor(model => model.SalesYtdHistory, new { @class = "control-label", style = "font-weight:bold;" })
+                                @Html.EditorFor(model => model.SalesYtdHistory, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit" style="margin-top:20px" >Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

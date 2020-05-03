@@ -37,7 +37,7 @@
             <li class="@Html.IsSelected(controller: "Accounting")">
                 <a href="#"><i class="fa fa-calculator"></i> <span class="nav-label" data-i18n="nav.forms">Accounting</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Accounting", cssClass: "in")">
-                    <li class="@Html.IsSelected(action: "CustomerManagement")"><a href="@Url.Action("CustomerManagement", "Accounting")">Customer Management</a></li>
+                    <li class="@Html.IsSelected(action: "CustomerManagement")"><a href="@Url.Action("Index", "CustomerManagement")">Customer Management</a></li>
                     <li class="@Html.IsSelected(action: "AccountManagement")"><a href="@Url.Action("AccountManagement", "Accounting")">Account Management</a></li>
                     <li class="@Html.IsSelected(action: "ReportingAnalytics")"><a href="@Url.Action("ReportingAnalytics", "Accounting")">Reporting & Analytics</a></li>
                     <li class="@Html.IsSelected(action: "InstantPay")"><a href="@Url.Action("InstantPay", "Accounting")">Instant Pay</a></li>

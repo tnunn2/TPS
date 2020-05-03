@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <button class="btn btn-primary" style="margin-bottom:10px" onclick="PopupForm('@Url.Action("GetData","CustomerManagement")')"><i class="fa fa-plus"></i> Add New</button>
+                    <button id="addCustomer" class="btn btn-primary" style="margin-bottom:10px" ><i class="fa fa-plus"></i> Add New</button>
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                             <tr>
@@ -68,6 +68,9 @@
 
 </div>
 
+
+
+
 @section Styles {
     <environment names="Development,Staging,Production">
         <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
@@ -81,23 +84,11 @@
     </environment>
 
     <script type="text/javascript">
-        var url = '@Url.Action("GetData","CustomerManagement")';
-        console.log(url);
+        const editUrl = '@Url.Action("Edit","CustomerManagement")'
+        var Popup, dataTable;
         $(document).ready(function () {
 
             dataTable = $('.dataTables-example').DataTable({
-                ajax: {
-                    url: url,
-                    type: "Get",
-                    dataType: "json"
-                },
-                columns: [
-                    { data: 'Name' },
-                    { data: 'User' },
-                    { data: 'SalesPerson' },
-                    { data: 'PastDueAmount' }
-                    { data: 'PhoneNumber' }
-                ],
                 pageLength: 25,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
@@ -118,7 +109,7 @@
                         }
                     }
                 ],
-                language: {
+                "language": {
                     "emptyTable" : "No data found, Please click on <b>Add New Customer</b> Buttom."
                 }
             });
@@ -141,5 +132,9 @@
                 });
             });
         }
+
+        $("#addCustomer").click(function (e) {
+            document.location.href = editUrl
+        })
     </script>
 }
