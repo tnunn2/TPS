@@ -28,6 +28,11 @@ namespace TPS.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(customer);
+            }
+
             if (string.IsNullOrEmpty(customer.User))
             {
                 _context.Add(customer);
