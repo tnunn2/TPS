@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TPS.Data;
@@ -9,9 +10,10 @@ using TPS.Data;
 namespace TPS.Migrations.TpsDb
 {
     [DbContext(typeof(TpsDbContext))]
-    partial class TpsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200503150003_Changed decimal and int to nullable on Customer table and removed duplicate column.")]
+    partial class ChangeddecimalandinttonullableonCustomertableandremovedduplicatecolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +32,7 @@ namespace TPS.Migrations.TpsDb
                         .HasColumnType("integer");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("AttentionOrCareOf")
@@ -48,6 +51,7 @@ namespace TPS.Migrations.TpsDb
                         .HasColumnType("text");
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("CreditLimit")
@@ -66,12 +70,14 @@ namespace TPS.Migrations.TpsDb
                         .HasColumnType("numeric");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<decimal?>("PastDueAmount")
                         .HasColumnType("numeric");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<decimal?>("Pricing")
@@ -96,6 +102,7 @@ namespace TPS.Migrations.TpsDb
                         .HasColumnType("text");
 
                     b.Property<string>("State")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Suite")
@@ -114,9 +121,11 @@ namespace TPS.Migrations.TpsDb
                         .HasColumnType("text");
 
                     b.Property<string>("User")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ZipCode")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("CustomerId");

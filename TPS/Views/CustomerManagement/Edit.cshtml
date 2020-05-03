@@ -1,4 +1,4 @@
-﻿@model TPS.Models.Customer
+﻿@model TPS.Models.CustomerModelView
 
 
 @section Scripts{
@@ -47,7 +47,6 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
                         <div class="row">
                             @Html.HiddenFor(model => model.CustomerId)
                             <div class="col-md-3 form-group">
@@ -142,11 +141,11 @@
                                 <input asp-for="CreditLimit" class="form-control" />
                                 <span asp-validation-for="CreditLimit" class="text-danger"></span>
                             </div>
-                            <div class="col-md-3 form-group">
+                            @*<div class="col-md-3 form-group">
                                 <label asp-for="AverageDaysToPay" class="control-label" style="font-weight:bold;"></label>
                                 <input asp-for="AverageDaysToPay" class="form-control" />
                                 <span asp-validation-for="AverageDaysToPay" class="text-danger"></span>
-                            </div>
+                            </div>*@
                             <div class="col-md-3 form-group">
                                 <label asp-for="CurrentBalance" class="control-label" style="font-weight:bold;"></label>
                                 <input asp-for="CurrentBalance" class="form-control" />

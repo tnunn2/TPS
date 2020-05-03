@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TPS.Data;
@@ -9,9 +10,10 @@ using TPS.Data;
 namespace TPS.Migrations.TpsDb
 {
     [DbContext(typeof(TpsDbContext))]
-    partial class TpsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200503154313_Changed decimal and int to nullable on Customer table and removed duplicate column.v2")]
+    partial class ChangeddecimalandinttonullableonCustomertableandremovedduplicatecolumnv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +36,6 @@ namespace TPS.Migrations.TpsDb
 
                     b.Property<string>("AttentionOrCareOf")
                         .HasColumnType("text");
-
-                    b.Property<decimal?>("AverageDaysToPay")
-                        .HasColumnType("numeric");
 
                     b.Property<string>("BalanceMethod")
                         .HasColumnType("text");

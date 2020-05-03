@@ -68,9 +68,6 @@
 
 </div>
 
-
-
-
 @section Styles {
     <environment names="Development,Staging,Production">
         <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
@@ -101,11 +98,11 @@
                     dataType: "json"
                 },
                 columns: [
-                    { data: 'Name' },
-                    { data: 'User' },
-                    { data: 'SalesPerson' },
-                    { data: 'PastDueAmount' },
-                    { data: 'PhoneNumber' }
+                    { data: 'name' },
+                    { data: 'user' },
+                    { data: 'salesPerson' },
+                    { data: 'pastDueAmount' },
+                    { data: 'phoneNumber' }
                 ],
                 pageLength: 25,
                 dom: '<"html5buttons"B>lTfgitp',
