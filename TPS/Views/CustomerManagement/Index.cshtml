@@ -39,26 +39,18 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <button id="addCustomer" class="btn btn-primary" style="margin-bottom:10px"><i class="fa fa-plus"></i> Add New</button>
+                    <button id="addCustomer" class="btn btn-primary" style="margin-bottom:20px"><i class="fa fa-plus"></i> Add New</button>
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Id</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>User</th>
-                                <th>Sales Person</th>
-                                <th>Past Due Amount</th>
                                 <th>Phone Number</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>User</th>
-                                <th>Sales Person</th>
-                                <th>Past Due Amount</th>
-                                <th>Phone Number</th>
-                            </tr>
-                        </tfoot>
                     </table>
 
                 </div>
@@ -98,11 +90,33 @@
                     dataType: "json"
                 },
                 columns: [
-                    { data: 'name' },
+                    { data: 'id' },
+                    { data: 'firstName' },
+                    { data: 'lastName'},
                     { data: 'user' },
-                    { data: 'salesPerson' },
-                    { data: 'pastDueAmount' },
-                    { data: 'phoneNumber' }
+                    { data: 'phoneNumber' },
+                    {
+                                mRender: function (data, type, row) {
+                                var linkEdit = '@Html.ActionLink("Edit", "Edit", new {id= -1 })';
+                                linkEdit = linkEdit.replace("-1", row.id);
+                                console.log(linkEdit);
+
+                                var linkDetails = '@Html.ActionLink("Details", "Details", new {id= -1 })';
+                                linkDetails = linkDetails.replace("-1", row.id);
+
+                                var linkDelete = '@Html.ActionLink("Delete", "Delete", new {id= -1 })';
+                                linkDelete = linkDelete.replace("-1", row.id);
+
+                                return linkDetails + " | " + linkEdit + " | " + linkDelete;
+                            }
+                    }
+                ],
+                columnDefs: [
+
+                                {
+                                    "targets": [ 0 ],
+                                    "visible": false
+                                }
                 ],
                 pageLength: 25,
                 dom: '<"html5buttons"B>lTfgitp',

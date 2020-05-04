@@ -1,21 +1,21 @@
-﻿@model TPS.Models.CustomerModelView
-
+﻿
+@model TPS.Models.CustomerModelView
 
 
 @section Scripts{
     <script type="text/javascript">
-    $('input[type=text]').each(function () {
-            var req = $(this).attr('data-val-required');
-            if (undefined != req) {
-                var label = $('label[for="' + $(this).attr('id') + '"]');
-                var text = label.text();
-                if (text.length > 0) {
-                    label.append('<span style="color:red"> *</span>');
-                }
-             }
-    });
+        $('input[type=text]').each(function () {
+                var req = $(this).attr('data-val-required');
+                if (undefined != req) {
+                    var label = $('label[for="' + $(this).attr('id') + '"]');
+                    var text = label.text();
+                    if (text.length > 0) {
+                        label.append('<span style="color:red"> *</span>');
+                    }
+                 }
+        });
 
-        $('#cancel').on('click', function () {
+        $('#back').on('click', function () {
             document.location.href = '@Url.Action("Index","CustomerManagement")'
         });
 
@@ -33,13 +33,13 @@
                 <a href="@Url.Action("Index", "CustomerManagement")">Customer Management</a>
             </li>
             <li class="active breadcrumb-item">
-                <strong>Add</strong>
+                <strong>Details</strong>
             </li>
         </ol>
     </div>
 </div>
 
-<form action="/CustomerManagement/Edit" method="post">
+
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
@@ -53,27 +53,23 @@
                         </div>
                     </div>
                     <div class="ibox-content">
+                        @Html.HiddenFor(model => model.CustomerId)
                         <div class="row">
-                            @Html.HiddenFor(model => model.CustomerId)
-                            <div class="col-md-3 form-group">
+                            <div class="col-md-3">
                                 <label asp-for="FirstName" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="FirstName" class="form-control" />
-                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                                <p>@Model.FirstName</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="LastName" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="LastName" class="form-control" />
-                                <span asp-validation-for="LastName" class="text-danger"></span>
+                                <p>@Model.LastName</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="User" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="User" class="form-control" />
-                                <span asp-validation-for="User" class="text-danger"></span>
+                                <p>@Model.User</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="PhoneNumber" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="PhoneNumber" class="form-control" />
-                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                <p>@Model.PhoneNumber</p>
                             </div>
                         </div>
                     </div>
@@ -98,33 +94,27 @@
                         <div class="row">
                             <div class="col-md-3 form-group">
                                 <label asp-for="AttentionOrCareOf" class="control-label required" style="font-weight:bold;"></label>
-                                <input asp-for="AttentionOrCareOf" class="form-control" />
-                                <span asp-validation-for="AttentionOrCareOf" class="text-danger"></span>
+                                <p>@Model.AttentionOrCareOf</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="Address" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="Address" class="form-control" />
-                                <span asp-validation-for="Address" class="text-danger"></span>
+                                <p>@Model.Address</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="Suite" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="Suite" class="form-control" />
-                                <span asp-validation-for="Suite" class="text-danger"></span>
+                                <p>@Model.Suite</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="City" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="City" class="form-control" />
-                                <span asp-validation-for="City" class="text-danger"></span>
+                                <p>@Model.City</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="State" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="State" class="form-control" />
-                                <span asp-validation-for="State" class="text-danger"></span>
+                                <p>@Model.State</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="ZipCode" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="ZipCode" class="form-control" />
-                                <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                <p>@Model.ZipCode</p>
                             </div>
                         </div>
                     </div>
@@ -149,126 +139,104 @@
                         <div class="row">
                             <div class="col-md-3 form-group">
                                 <label asp-for="BillingContact" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="BillingContact" class="form-control" />
-                                <span asp-validation-for="BillingContact" class="text-danger"></span>
+                                <p>@Model.BillingContact</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="SalesPerson" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="SalesPerson" class="form-control" />
-                                <span asp-validation-for="SalesPerson" class="text-danger"></span>
+                                <p>@Model.SalesPerson</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="BalanceMethod" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="BalanceMethod" class="form-control" />
-                                <span asp-validation-for="BalanceMethod" class="text-danger"></span>
+                                <p>@Model.BalanceMethod</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="TermsCode" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="TermsCode" class="form-control" />
-                                <span asp-validation-for="TermsCode" class="text-danger"></span>
+                                <p>@Model.TermsCode</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="CreditLimit" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="CreditLimit" class="form-control" />
-                                <span asp-validation-for="CreditLimit" class="text-danger"></span>
+                                <p>@Model.CreditLimit</p>
                             </div>
-                            @*<div class="col-md-3 form-group">
-                                    <label asp-for="AverageDaysToPay" class="control-label" style="font-weight:bold;"></label>
-                                    <input asp-for="AverageDaysToPay" class="form-control" />
-                                    <span asp-validation-for="AverageDaysToPay" class="text-danger"></span>
-                                </div>*@
+                            <div class="col-md-3 form-group">
+                                <label asp-for="AverageDaysToPay" class="control-label" style="font-weight:bold;"></label>
+                                <p>@Model.AverageDaysToPay</p>
+                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="CurrentBalance" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="CurrentBalance" class="form-control" />
-                                <span asp-validation-for="CurrentBalance" class="text-danger"></span>
+                                <p>@Model.CurrentBalance</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="PastDueAmount" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="PastDueAmount" class="form-control" />
-                                <span asp-validation-for="PastDueAmount" class="text-danger"></span>
+                                <p>@Model.PastDueAmount</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="HighBalance" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="HighBalance" class="form-control" />
-                                <span asp-validation-for="HighBalance" class="text-danger"></span>
+                                <p>@Model.HighBalance</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="Pricing" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="Pricing" class="form-control" />
-                                <span asp-validation-for="Pricing" class="text-danger"></span>
+                                <p>@Model.Pricing</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="Discount" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="Discount" class="form-control" />
-                                <span asp-validation-for="Discount" class="text-danger"></span>
+                                <p>@Model.Discount</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="RequiredPoNumber" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="RequiredPoNumber" class="form-control" />
-                                <span asp-validation-for="RequiredPoNumber" class="text-danger"></span>
+                                <p>@Model.RequiredPoNumber</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="ShipVia" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="ShipVia" class="form-control" />
-                                <span asp-validation-for="ShipVia" class="text-danger"></span>
+                                <p>@Model.ShipVia</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="TaxCode" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="TaxCode" class="form-control" />
-                                <span asp-validation-for="TaxCode" class="text-danger"></span>
+                                <p>@Model.TaxCode</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="ShipTo" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="ShipTo" class="form-control" />
-                                <span asp-validation-for="ShipTo" class="text-danger"></span>
+                                <p>@Model.ShipTo</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="BillTo" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="BillTo" class="form-control" />
-                                <span asp-validation-for="BillTo" class="text-danger"></span>
+                                <p>@Model.BillTo</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="Type" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="Type" class="form-control" />
-                                <span asp-validation-for="Type" class="text-danger"></span>
+                                <p>@Model.Type</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="Group" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="Group" class="form-control" />
-                                <span asp-validation-for="Group" class="text-danger"></span>
+                                <p>@Model.Group</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="TaxNumber" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="TaxNumber" class="form-control" />
-                                <span asp-validation-for="TaxNumber" class="text-danger"></span>
+                                <p>@Model.TaxNumber</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="AccountReceivable" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="AccountReceivable" class="form-control" />
-                                <span asp-validation-for="AccountReceivable" class="text-danger"></span>
+                                <p>@Model.AccountReceivable</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="SalesPerson" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="SalesPerson" class="form-control" />
-                                <span asp-validation-for="SalesPerson" class="text-danger"></span>
+                                <p>@Model.SalesPerson</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="SalesPtdHistory" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="SalesPtdHistory" class="form-control" />
-                                <span asp-validation-for="SalesPtdHistory" class="text-danger"></span>
+                                <p>@Model.SalesPtdHistory</p>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label asp-for="SalesYtdHistory" class="control-label" style="font-weight:bold;"></label>
-                                <input asp-for="SalesYtdHistory" class="form-control" />
-                                <span asp-validation-for="SalesYtdHistory" class="text-danger"></span>
+                                <p>@Model.SalesYtdHistory</p>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit" style="margin-top:20px">Save</button>
-                        <button id="cancel" type="button" class="btn btn-dark" style="margin-top:20px">Cancel</button>
+                        <button id="back" class="btn btn-primary" style="margin-top:20px">Back</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</form>
+
+
+
 

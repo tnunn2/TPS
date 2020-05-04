@@ -100,7 +100,7 @@ namespace ASPNET_Core_3.Controllers
 
         public IActionResult Login()
         {
-            return View("Login1");
+            return View("Login");
         }
 
         [HttpPost]
@@ -115,7 +115,7 @@ namespace ASPNET_Core_3.Controllers
 
             ViewBag.Result = "Invalid User or Password";
 
-            return View("Login1");
+            return View("Login");
         }
 
         public async Task<IActionResult> Logout()

@@ -18,7 +18,73 @@ namespace TPS.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id = 0)
+        public IActionResult Delete(int id)
+        {
+            if (id > 0)
+            {
+                var customer = _context.Customers.Find(id);
+
+                if (customer != null)
+                {
+                    _context.Remove(customer);
+                    _context.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            CustomerModelView customerViewModel = new CustomerModelView();
+            if (id > 0)
+            {
+                var customer = _context.Customers.Find(id) ?? new Customer();
+
+                customerViewModel = new CustomerModelView
+                {
+                    CustomerId = customer.CustomerId,
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    User = customer.User,
+                    Address = customer.Address,
+                    AttentionOrCareOf = customer.AttentionOrCareOf,
+                    Suite = customer.Suite,
+                    City = customer.City,
+                    State = customer.State,
+                    ZipCode = customer.ZipCode,
+                    BillingContact = customer.BillingContact,
+                    PhoneNumber = customer.PhoneNumber,
+                    SalesPerson = customer.SalesPerson,
+                    BalanceMethod = customer.BalanceMethod,
+                    TermsCode = customer.TermsCode,
+                    CreditLimit = customer.CreditLimit,
+                    AverageDaysToPay = customer.AverageDaysToPay,
+                    CurrentBalance = customer.CurrentBalance,
+                    PastDueAmount = customer.PastDueAmount,
+                    HighBalance = customer.HighBalance,
+                    Pricing = customer.Pricing,
+                    Discount = customer.Discount,
+                    RequiredPoNumber = customer.RequiredPoNumber,
+                    ShipVia = customer.ShipVia,
+                    TaxCode = customer.TaxCode,
+                    ShipTo = customer.ShipTo,
+                    BillTo = customer.BillTo,
+                    Type = customer.Type,
+                    Group = customer.Group,
+                    TaxNumber = customer.TaxNumber,
+                    AccountReceivable = customer.AccountReceivable,
+                    SalesPtdHistory = customer.SalesPtdHistory,
+                    SalesYtdHistory = customer.SalesYtdHistory
+                };
+            }
+
+            return View(customerViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
             CustomerModelView customerViewModel = new CustomerModelView();
 
@@ -29,9 +95,10 @@ namespace TPS.Controllers
                 customerViewModel = new CustomerModelView
                 {
                     CustomerId = customer.CustomerId,
-                    Name = customer.Name,
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
                     User = customer.User,
-                    Address = customer.Name,
+                    Address = customer.Address,
                     AttentionOrCareOf = customer.AttentionOrCareOf,
                     Suite = customer.Suite,
                     City = customer.City,
@@ -77,9 +144,10 @@ namespace TPS.Controllers
             var customer = new Customer
             {
                 CustomerId = customerViewModel.CustomerId,
-                Name = customerViewModel.Name,
+                FirstName = customerViewModel.FirstName,
+                LastName = customerViewModel.LastName,
                 User = customerViewModel.User,
-                Address = customerViewModel.Name,
+                Address = customerViewModel.Address,
                 AttentionOrCareOf = customerViewModel.AttentionOrCareOf,
                 Suite = customerViewModel.Suite,
                 City = customerViewModel.City,
@@ -109,7 +177,16 @@ namespace TPS.Controllers
                 SalesPtdHistory = customerViewModel.SalesPtdHistory,
                 SalesYtdHistory = customerViewModel.SalesYtdHistory
             };
-            _context.Add(customer);
+
+            if (customer.CustomerId <= 0)
+            {
+                _context.Add(customer);
+            }
+            else
+            {
+                _context.Update(customer);
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -127,10 +204,9 @@ namespace TPS.Controllers
             var customers = _context.Customers.Select(s => new CustomerListViewModel
             {
                 Id = s.CustomerId,
-                Name = s.Name,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
                 User = s.User,
-                SalesPerson = s.SalesPerson,
-                PastDueAmount = s.PastDueAmount.HasValue ? s.PastDueAmount.Value : 0,
                 PhoneNumber = s.PhoneNumber
             });
 

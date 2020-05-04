@@ -6,9 +6,13 @@ namespace TPS.Models
 {
     public class CustomerModelView
     {
-        public int CustomerId { get; set; }
+        public int CustomerId { get; set; }        
+        [DisplayName("First Name")]
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        [DisplayName("Last Name")]
+        [Required]
+        public string LastName { get; set; }
         [Required]
         public string User { get; set; }
         [Required]
@@ -26,6 +30,7 @@ namespace TPS.Models
         [DisplayName("Billing Contact")]
         public string BillingContact { get; set; }
         [DisplayName("Phone Number")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid Phone number")]
         [Required]
         public string PhoneNumber { get; set; }
         [DisplayName("Sales Person")]
